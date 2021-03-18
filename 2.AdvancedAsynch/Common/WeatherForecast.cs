@@ -4,6 +4,7 @@ namespace Common
 {
     public class WeatherForecast
     {
+        public string Town { get; set; }
         public DateTime Date { get; set; }
 
         public int TemperatureC { get; set; }
