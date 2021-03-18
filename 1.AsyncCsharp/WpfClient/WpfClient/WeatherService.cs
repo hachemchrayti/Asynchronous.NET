@@ -17,9 +17,7 @@ namespace WpfClient
         public  async Task<string> getWeatherResult()
         {
             var client = new WebClient();
-
             var response = await client.DownloadStringTaskAsync("http://localhost:9876/WeatherForecast");
-
             var forecasts = JsonConvert.DeserializeObject<List<WeatherForecast>>(response);
             return string.Join(Environment.NewLine, forecasts.Select(f => $"Le {f.Date:dd/MM/yyyy}, il fera {f.TemperatureC}°"));
           

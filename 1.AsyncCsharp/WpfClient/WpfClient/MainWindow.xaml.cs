@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace WpfClient
@@ -24,11 +25,8 @@ namespace WpfClient
         {
             progress.IsIndeterminate = true;
             progress.Visibility = Visibility.Visible;
-
-
-
-            tb_result.Text = await service.getWeatherResult();
-
+            //tb_result.Text = await service.getWeatherResult();
+            tb_result.Text = await Task.Run(()=>  service.getWeatherResult()); //Passer une méthode sychnrone(getWeatherresult() ) en une méthode asychrone task.Run
             progress.IsIndeterminate = false;
             progress.Visibility = Visibility.Hidden;
         }
