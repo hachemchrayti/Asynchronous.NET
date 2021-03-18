@@ -1,0 +1,37 @@
+﻿<Window x:Class="WpfClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label>Ville(s) :</Label>
+        <TextBox x:Name="tb_villes" Grid.Column="1" />
+        <Button Click="Button_Click" Grid.Column="2" x:Name="btn_get">Récupérer météo</Button>
+        <Button Click="Btn_cancel_OnClick" Grid.Column="3" x:Name="btn_cancel" IsEnabled="False">Annuler</Button>
+        <ProgressBar Grid.Row="1" Grid.ColumnSpan="4" IsIndeterminate="True" x:Name="progress" Visibility="Hidden"></ProgressBar>
+        <DataGrid x:Name="gd_results" Grid.Row="2" Grid.ColumnSpan="4">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ville" Width="*" Binding="{Binding Town}" />
+                <DataGridTextColumn Header="J+1" Width="*" Binding="{Binding JPlus1}" />
+                <DataGridTextColumn Header="J+2" Width="*" Binding="{Binding JPlus2}" />
+                <DataGridTextColumn Header="J+3" Width="*" Binding="{Binding JPlus3}" />
+                <DataGridTextColumn Header="J+4" Width="*" Binding="{Binding JPlus4}" />
+                <DataGridTextColumn Header="J+5" Width="*" Binding="{Binding JPlus5}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

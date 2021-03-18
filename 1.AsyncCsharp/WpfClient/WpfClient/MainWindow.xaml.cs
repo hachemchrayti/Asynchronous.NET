@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace WpfClient
@@ -13,24 +14,19 @@ namespace WpfClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        private WeatherService service;
         public MainWindow()
         {
             InitializeComponent();
+            service = new WeatherService();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private  async  void Button_Click(object sender, RoutedEventArgs e)
         {
             progress.IsIndeterminate = true;
             progress.Visibility = Visibility.Visible;
-
-            var client = new WebClient();
-
-            var response = client.DownloadString("http://localhost:9876/WeatherForecast");
-
-            var forecasts = JsonConvert.DeserializeObject<List<WeatherForecast>>(response);
-
-            tb_result.Text = string.Join(Environment.NewLine, forecasts.Select(f => $"Le {f.Date:dd/MM/yyyy}, il fera {f.TemperatureC}°"));
-
+            //tb_result.Text = await service.getWeatherResult();
+            tb_result.Text = await Task.Run(()=>  service.getWeatherResult()); //Passer une méthode sychnrone(getWeatherresult() ) en une méthode asychrone task.Run
             progress.IsIndeterminate = false;
             progress.Visibility = Visibility.Hidden;
         }

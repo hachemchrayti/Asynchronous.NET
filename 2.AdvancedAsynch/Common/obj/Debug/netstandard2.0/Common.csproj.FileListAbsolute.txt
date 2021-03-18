@@ -1,0 +1,9 @@
+D:\Projects\AsynchronousC#\2.AdvancedAsynch\Common\bin\Debug\netstandard2.0\Common.deps.json
+D:\Projects\AsynchronousC#\2.AdvancedAsynch\Common\bin\Debug\netstandard2.0\Common.dll
+D:\Projects\AsynchronousC#\2.AdvancedAsynch\Common\bin\Debug\netstandard2.0\Common.pdb
+D:\Projects\AsynchronousC#\2.AdvancedAsynch\Common\obj\Debug\netstandard2.0\Common.AssemblyInfoInputs.cache
+D:\Projects\AsynchronousC#\2.AdvancedAsynch\Common\obj\Debug\netstandard2.0\Common.AssemblyInfo.cs
+D:\Projects\AsynchronousC#\2.AdvancedAsynch\Common\obj\Debug\netstandard2.0\Common.csproj.CoreCompileInputs.cache
+D:\Projects\AsynchronousC#\2.AdvancedAsynch\Common\obj\Debug\netstandard2.0\Common.dll
+D:\Projects\AsynchronousC#\2.AdvancedAsynch\Common\obj\Debug\netstandard2.0\Common.pdb
+D:\Projects\AsynchronousC#\2.AdvancedAsynch\Common\obj\Debug\netstandard2.0\Common.csprojAssemblyReference.cache
