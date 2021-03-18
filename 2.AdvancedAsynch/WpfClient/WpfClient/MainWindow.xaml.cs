@@ -34,28 +34,26 @@ namespace WpfClient
             try
             {
                 tokenSource = new CancellationTokenSource();
-                var dico = new Dictionary<string,Task<List<WeatherForecast>>>();
-                foreach (var town in towns)
+                await Task.Run(() =>
                 {
-                    dico.Add(town, service.GetWeather(town, tokenSource.Token));
-                }
-
-               await Task.WhenAll(dico.Values);
-                foreach (var item in dico)
-                {
-                    gd_results.Items.Add(new ResultRow
-                    {
-                        Town = item.Key,
-                        JPlus1 = item.Value.Result[0].TemperatureC.ToString(),
-                        JPlus2 = item.Value.Result[1].TemperatureC.ToString(),
-                        JPlus3 = item.Value.Result[2].TemperatureC.ToString(),
-                        JPlus4 = item.Value.Result[3].TemperatureC.ToString(),
-                        JPlus5 = item.Value.Result[4].TemperatureC.ToString()
-                    });
-                }
-
-                
-
+                    Parallel.ForEach(towns, new ParallelOptions { CancellationToken = tokenSource.Token }, town =>
+                        {
+                            var item = service.GetWeatherSync(town);
+                            Dispatcher.Invoke(() =>
+                            {
+                                gd_results.Items.Add(new ResultRow
+                                {
+                                    Town = town,
+                                    JPlus1 = item[0].TemperatureC.ToString(),
+                                    JPlus2 = item[1].TemperatureC.ToString(),
+                                    JPlus3 = item[2].TemperatureC.ToString(),
+                                    JPlus4 = item[3].TemperatureC.ToString(),
+                                    JPlus5 = item[4].TemperatureC.ToString()
+                                });
+                            });
+                        });
+                });
+           
             }
             catch (OperationCanceledException exception)
             {

@@ -20,5 +20,16 @@ namespace WpfClient
 
             return forecasts;
         }
+
+
+        public  List<WeatherForecast> GetWeatherSync(string town)
+        {
+            var client = new WebClient();
+
+            var response =  client.DownloadString($"http://localhost:9876/WeatherForecast/{town}");
+            var forecasts = JsonConvert.DeserializeObject<List<WeatherForecast>>(response);
+
+            return forecasts;
+        }
     }
 }
